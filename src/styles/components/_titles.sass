@@ -1,0 +1,62 @@
+.title
+  margin: 0
+  padding: 0
+  font-size: 1.4em
+  font-weight: 400
+  font-family: $basic
+  line-height: 1.5
+  +v-md
+    font-size: 1.2em
+  &-step
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100px
+    height: 100px
+    margin: 40px auto
+    font-size: 4em !important
+    font-weight: 200
+    border-radius: 50px
+    border: 2px solid transparent
+    background: linear-gradient(white, white) padding-box, linear-gradient(90deg, #4E7BF5, #A541FD) border-box
+    transition: all ease-out 1s
+    &:hover
+      background: linear-gradient(white, white) padding-box, linear-gradient(-90deg, #4E7BF5, #A541FD) border-box
+  &-grd
+    font-size: 4em
+    display: inline-block
+    background: linear-gradient(90deg, #4E7BF5, #A541FD)
+    background-clip: text
+    -webkit-background-clip: text
+    color: transparent
+    -webkit-text-fill-color: transparent
+    +v-xs
+      font-size: 2em
+    &.serv
+      display: flex
+      align-items: center
+      min-height: 46px
+      font-size: .9em
+      font-weight: 500
+      line-height: 1.2
+  &-sub
+    font-size: 2.75em
+    font-weight: 400
+    +v-xs
+      font-size: 1.75em
+  &-intro
+    font-size: 4em
+    +v-md
+      font-size: 3em
+    +v-md
+      font-size: 2em
+      line-height: 1.5
+  &-part
+    font-size: 1.5em
+    +v-md
+      font-size: 1.02em
+  &-mini
+    font-size: 1.1em
+    font-weight: 400
+    +v-md
+      font-size: 1em

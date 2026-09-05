@@ -1,0 +1,37 @@
+.custom-form
+  color: #fff
+  +v-sm
+    padding-top: 40px
+    margin-left: -24px
+
+  .form-label
+    color: #fff
+    font-weight: 500
+
+.custom-input
+  background-color: transparent
+  border: 1px solid #fff
+  color: #fff
+  border-radius: 4px
+  padding: 10px 12px
+
+  &:focus
+    background-color: transparent
+    color: #fff
+    border-color: #fff
+    box-shadow: none
+
+  &::placeholder
+    color: rgba(255, 255, 255, 0.6)
+
+.invalid-feedback
+  display: block
+  color: $pink
+  font-size: 0.875rem
+
+.is-invalid
+  border-color: $pink !important
+
+.form-control
+  &.is-invalid
+    background-image: none

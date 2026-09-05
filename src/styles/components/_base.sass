@@ -1,0 +1,55 @@
+html
+  font-size: 1rem
+  font-smooth: always
+
+body
+  margin: 0
+  color: $dark
+  font-size: 95%
+  font-family: $basic
+  line-height: 1.5
+
+p,
+figure
+  margin: 0
+  padding: 0
+
+p
+  line-height: 1.5
+
+a
+  color: $dark
+  text-decoration: none
+
+footer
+  +v-sm
+    margin-bottom: 40px
+
+nav
+  a
+    padding: 0 16px
+    transition: all ease .3s
+    &.button
+      margin-left: 20px
+      +v-sm
+        margin-left: auto
+
+.bg-footer
+  +v-sm
+    margin-bottom: -40px
+  nav
+    a
+      color: $white
+      &:hover
+        color: $blue
+
+.page-content
+  h3
+    margin-top: 24px
+    margin-bottom: 12px
+  ul,
+  ol
+    margin-top: 8px
+    font-size: 1.15em
+  p
+    font-size: 1.15em

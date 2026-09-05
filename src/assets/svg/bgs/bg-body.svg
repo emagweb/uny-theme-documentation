@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 614 383.75">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#radial-gradient);
+      }
+
+      .cls-2 {
+        isolation: isolate;
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-3, .cls-4 {
+        mix-blend-mode: overlay;
+      }
+
+      .cls-4 {
+        fill: url(#linear-gradient-2);
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="408.17" cy="220.67" fx="408.17" fy="220.67" r="212.1" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0400e9"/>
+      <stop offset="1" stop-color="#2a1951"/>
+    </radialGradient>
+    <linearGradient id="linear-gradient" x1="334.72" y1="303.26" x2="267.03" y2="128.07" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity="0"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="275.77" y1="187.63" x2="200.12" y2="58.9" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g class="cls-2">
+    <g id="Layer_2" data-name="Layer 2">
+      <g id="OBJECTS">
+        <g>
+          <rect class="cls-1" y="0" width="614" height="383.75"/>
+          <path class="cls-3" d="M614,79.28c-138.84-35.76-158.89,193.03-287.19,161.81-137.7-33.5-116.3,123.5-211.3,90.5-50.26-17.46-89.6-1.33-115.51,17.73v34.43h614V79.28Z"/>
+          <path class="cls-4" d="M0,205.03c102.1,24.08,116.84-129.98,211.19-108.96,101.26,22.56,84.26-78.7,155.38-60.94C424.51,49.59,451.51,0,451.51,0H0v205.03Z"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
