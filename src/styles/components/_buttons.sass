@@ -5,28 +5,33 @@
   min-width: 160px
   height: 50px
   padding: 0 35px
-  color: $white
+  color: $on-accent
   font-size: 1.15em
   font-weight: 400
-  border-radius: 3px
+  border-radius: 8px
   transition: all ease-out 1s
   outline: none !important
   box-shadow: none !important
   border: none !important
-  background: linear-gradient(270deg, #4E7BF5 0%, #A541FD 100%)
+  background: linear-gradient(270deg, #E91E8C 0%, #C4177A 100%)
   &.top
     min-width: auto
     font-size: 1em
     height: 36px
     padding: 0 20px
     &:hover
-      color: $white
+      color: $on-accent
   &:hover
     opacity: .75
   &.outline
-    color: $theme
-    border: 2px solid $theme
-    background: #130B26 !important
-    border-color: linear-gradient(90deg, #4E7BF5, #A541FD)
+    // White label, accent outline: the pink-on-dark label only reached 3.7:1,
+    // and next to the solid accent button the two now read as one pair.
+    color: $on-accent
+    // `border-color: linear-gradient(...)` used to sit here - a gradient is not a
+    // valid <color>, so the browser dropped the whole declaration. The 2px accent
+    // border is what actually draws.
+    border: 2px solid $theme !important
+    background: transparent !important
     &:hover
-      color: $white
+      color: $on-accent
+      background: $theme !important

@@ -23,8 +23,8 @@
       }
     </style>
     <radialGradient id="radial-gradient" cx="408.17" cy="220.67" fx="408.17" fy="220.67" r="212.1" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#0400e9"/>
-      <stop offset="1" stop-color="#2a1951"/>
+      <stop offset="0" stop-color="#E91E8C"/>
+      <stop offset="1" stop-color="#242424"/>
     </radialGradient>
     <linearGradient id="linear-gradient" x1="334.72" y1="303.26" x2="267.03" y2="128.07" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#fff" stop-opacity="0"/>

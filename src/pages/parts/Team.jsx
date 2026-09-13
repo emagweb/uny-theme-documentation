@@ -1,51 +1,26 @@
-import team from '../../data/team'
-
+import chapters from '../../data/chapters'
 const Team = () => {
-
   return (
-    <section id="team" className="m-b-80">
-      <div className="container">
-        <h2 className='title-intro p-b-24 m-b-40 tc'>Our Team</h2>
+    <section id="chapters" className="p-y-100">
+      <div className="container tc">
+        <p className="upp c-theme fw-500 fz-14 p-b-16">Contents</p>
+        <h2 className='title-intro fw-700 p-b-24'>Where to read what</h2>
+        <p className="fz-20 c-grey w-60 ma wide m-b-60">Six chapters. Start with the theme, then the builder.</p>
         <div className="row">
-          {team.map((el) => (
+          {chapters.map((el) => (
             <div className="col-lg-6 m-b-24" key={el.id}>
-              <div className="bg-light r-12 w-100 p-y-32 p-x-40">
-                <div className="md-hide">
-                  <div className="row">
-                    <div className="col-lg-5">
-                      <img src={el.pic} alt={`${el.name} - ${el.job}`} width={216} height={300} className="bc-white bw-2 r-8 w-100 obfc" />
-                    </div>
-                    <div className="col-lg-7 p-l-24">
-                      <div className="flex jcsb aic">
-                        <h3 className="title-card fw-600">{el.name}</h3>
-                      </div>
-                      <p className='c-theme fw-500 fz-18'>{el.job}</p>
-                      <p className="m-y-16 fz-18">{el.text}</p>
-                    </div>
-                  </div>
-                </div>
-                <div className="md-show">
-                  <div className="row">
-                    <div className="col-lg-5">
-                      <img src={el.pic} alt={`${el.name} - ${el.job}`} width={216} height={300} className="mob-pic bc-white bw-2 r-8 w-100 obfc" />
-                    </div>
-                    <div className="col-lg-7">
-                      <div className="flex jcsb aic">
-                        <h3 className="title-card fw-600">{el.name}</h3>
-                      </div>
-                      <p className='c-theme fw-500 fz-18'>{el.job}</p>
-                      <p className="m-y-16 fz-18">{el.text}</p>
-                    </div>
-                  </div>
-                </div>
+              <div className="bg-light r-12 p-x-32 p-y-32">
+                <img src={el.pic} alt={`${el.name} - ${el.job}`} className="r-8 m-b-24" style={{ display: 'block', width: '100%', height: 'auto' }} />
+                <p className="upp c-theme fw-500 fz-14 p-b-8">{el.job}</p>
+                <h3 className="title-part fw-700 m-b-16">{el.name}</h3>
+                <p className="c-grey m-b-16">{el.text}</p>
+                <a href={el.link} className="fw-500 c-theme">Read the {el.name} guide</a>
               </div>
             </div>
           ))}
         </div>
-        <div className="m-y-40 tc"><a href="https://calendly.com/i-andrey/studio" target="_blank" rel="noopener noreferrer" className='button'>Book a Call</a></div>
       </div>
     </section>
   )
 }
-
 export { Team }

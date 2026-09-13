@@ -1,7 +1,13 @@
 .bg-cta
-  background: $dark url('../../assets/svg/bgs/bg-cta.svg') center center no-repeat
+  background: $medium url('../../assets/svg/bgs/bg-cta.svg') center center no-repeat
   background-size: cover
 
+.bg-hero-bundle
+  // Flat surface tone plus the artwork in multiply: the shot darkens the tone
+  // instead of a tint layer sitting on top of it, so the type keeps one even
+  // backdrop and the bundle still reads.
+  background: $medium url('../../assets/img/uny/uny-bundle.jpg') center top no-repeat
+  background-blend-mode: multiply
 .bg-hero
   background: $white url('../../assets/svg/bgs/bg-body.svg') center top no-repeat
   background-size: 100%
@@ -12,19 +18,21 @@
     background-size: cover
 
 .bg-about
-  background: #130B26 url('../../assets/svg/bgs/bg-about.svg') center center no-repeat
+  background: $medium url('../../assets/svg/bgs/bg-about.svg') center center no-repeat
   background-size: cover
 
 .bg-grd
   border: none
   box-shadow: none
-  background: linear-gradient(180deg, #4E7BF5, #A541FD)
+  background: linear-gradient(180deg, #E91E8C, #C4177A)
 
 .bg-card
   border: none
   box-shadow: none
-  background: linear-gradient(180deg, #4E7BF5, #A541FD)
+  background: linear-gradient(180deg, #E91E8C, #C4177A)
 
 .bg-footer
-  background: $dark url('../../assets/svg/bgs/bg-cta.svg') center center no-repeat
-  background-size: 100%
+  // Same tone as the page surface, separated by a hairline instead of a panel:
+  // the artwork background made the footer read as a second section.
+  background: $white
+  border-top: 1px solid rgba(255, 255, 255, .15)

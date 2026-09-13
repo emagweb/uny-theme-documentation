@@ -4,7 +4,7 @@ https://github.com/emagweb/uny-theme-documentation
 
 # Website Url
 
-https://{укажи наш домен для документации}
+https://uny-theme.dvostok.com
 
 ## Setup
 

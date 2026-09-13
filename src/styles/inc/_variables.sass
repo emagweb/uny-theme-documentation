@@ -1,20 +1,40 @@
-$dark: #090909
-$grey: #858585
-$medium: #131313
-$light: #F3F5FF
-$blue: #21A6FF
-$pink: #FF2790
-$yellow: #f0a731
-$violet: #4E18AD
-$orange: #FF3F40
-$red: #BE1969
-$green: #99b142
-$white: #fff
-$theme: #808CEB
-
-$grd: linear-gradient(90deg, #4E7BF5, #A541FD)
-
-$basic: 'Outfit', sans-serif
+// Dark scheme, taken verbatim from the theme: `ewut_uny_scheme_palette( 'dark' )`
+// in wp-content/themes/uny/inc/theme-setup.php. Those values are the ones the
+// theme measured against WCAG on the blog, a post and the shop, so the docs and
+// the product now show the same surfaces.
+//
+// The token names stay semantic: $white is "page surface", $dark is "primary
+// ink". That is why flipping the values here turns the whole documentation dark
+// without touching a single utility class.
+$dark: #F2F2F4
+$grey: #B4B4C4
+$medium: #2B2B40
+$light: #23233A
+$blue: #E91E8C
+$pink: #E91E8C
+$yellow: #3A3A55
+$violet: #C4177A
+$orange: #8A8AA0
+$red: #C4177A
+$green: #B4B4C4
+$white: #1B1B2B
+$theme: #E91E8C
+// Accent lightened for dark surfaces. The brand pink reaches only 3.66-4.11:1 on
+// the surfaces used here (measured on the hero artwork, .bg-light and the page
+// tone), this one gives 5.03-5.64. Meant for dark backgrounds only - over white
+// it drops to 3.04, so the solid brand accent stays in charge of buttons.
+$theme-light: #F45BA8
+$border: #3A3A55
+$border-dark: #4A4A66
+// Same split the theme makes (--ewut-uny-on-accent / --ewut-uny-ink): the accent
+// does not change between schemes, so a label drawn ON it stays white in both.
+// Without this, flipping $white turned every button label dark on pink.
+// Header height, shared by .site-nav and by the hero that slides under it.
+$header-h: 80px
+$on-accent: #FFFFFF
+$ink: #0F0F0F
+$grd: linear-gradient(90deg, #E91E8C, #C4177A)
+$basic: 'Google Sans', sans-serif
 
 =placeholder
   &::-webkit-input-placeholder

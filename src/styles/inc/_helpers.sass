@@ -93,6 +93,11 @@
     $size: $i * .001
     display: inline-block
     line-height: $size !important
+// Letter spacing classes: .ls-5 is .05em
+@for $i from 0 through 20
+  .ls-#{$i}
+    $size: $i * .01em
+    letter-spacing: $size !important
 
 // Border Width
 @for $i from 0 through 24
@@ -156,9 +161,12 @@
 .tc
   text-align: center !important
 
-// Flex flow class
+// Flex flow class. The row gap only shows between WRAPPED lines, so a row that fits
+// on one line is untouched, and a pair of buttons that wraps on a phone keeps 16px
+// between them instead of touching.
 .rowrap
   flex-flow: row wrap
+  row-gap: 16px
 
 // Overflow class
 .oh

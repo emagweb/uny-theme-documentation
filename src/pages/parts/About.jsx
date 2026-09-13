@@ -1,66 +1,72 @@
-import { PiUsersLight, PiGlobeHemisphereEastLight, PiHandshakeLight, PiCurrencyDollarLight, PiSmileyLight, PiMedalLight } from "react-icons/pi"
-
-const blue = '#21A6FF'
-
+import { PiStackLight, PiSquaresFourLight, PiSlidersLight, PiStorefrontLight, PiPlugsConnectedLight, PiShieldCheckLight } from "react-icons/pi"
+const accent = '#E91E8C'
+import demoScreen from '../../assets/img/uny/demo-screen-desktop.png'
 const About = () => {
   return (
-    <section id='about' className="bg-about p-y-160 m-t-24 m-b-100">
-      <div className="container c-white">
-        <h2 className='title-intro p-b-24'>Your Trusted Partner<br />in Fintech Compliance & Security</h2>
-        <h3 className="title w-60 m-y-60">150+ fintech companies across 18 countries trust Rogovsky Studio with their regulatory compliance journey. From DORA to SOC2, we deliver tailored solutions that keep you compliant and secure.</h3>
-        <h4 className="title-grd fz-22 m-t-48 m-b-32">Here's why leading fintechs choose Rogovsky Studio:</h4>
+    <section id='about' className="bg-medium p-y-120 m-y-100">
+      <div className="container">
         <div className="row">
+          <div className="col-lg-6">
+            <p className="upp c-theme fw-500 fz-14 p-b-16">The package</p>
+            <h2 className='title-intro fw-700 p-b-24'>A theme and a builder<br />designed together</h2>
+            <p className="fz-20 m-b-40 c-grey">Uny is a WordPress theme plus a section builder that share one palette, one type scale and one grid. You assemble a page from finished blocks and it looks designed, because the blocks were designed as a set. Assemble it by hand, or let the AI assistant draft it and edit what it gives you.</p>
+          </div>
+          <div className="col-lg-6 m-hide">
+            <img src={demoScreen} alt="A demo page built with the Uny theme, shown on a laptop" style={{ display: 'block', width: '100%', height: 'auto' }} />
+          </div>
+        </div>
+        <div className="row m-t-60">
           <div className="col-lg-4 m-y-24">
             <div className="flex aic">
-              <PiUsersLight size={56} color={blue} />
+              <PiStackLight size={56} color={accent} />
               <div className="p-l-16">
-                <h3 className="title p-y-0">150+</h3>
-                <p>Fintech Clients Served</p>
+                <h3 className="title fw-700 p-y-0">214</h3>
+                <p className="c-grey">Ready-made sections</p>
               </div>
             </div>
           </div>
           <div className="col-lg-4 m-y-24">
             <div className="flex aic">
-              <PiGlobeHemisphereEastLight size={56} color={blue} />
+              <PiSquaresFourLight size={56} color={accent} />
               <div className="p-l-16">
-                <h3 className="title p-y-0">18+ Countries</h3>
-                <p>Regulatory Coverage</p>
+                <h3 className="title fw-700 p-y-0">15 Groups</h3>
+                <p className="c-grey">Headers to footers</p>
               </div>
             </div>
           </div>
           <div className="col-lg-4 m-y-24">
             <div className="flex aic">
-              <PiHandshakeLight size={56} color={blue} />
+              <PiSlidersLight size={56} color={accent} />
               <div className="p-l-16">
-                <h3 className="title p-y-0">Full Compliance</h3>
-                <p>DORA, GDPR, SOC2 Certified</p>
+                <h3 className="title fw-700 p-y-0">Light &amp; Dark</h3>
+                <p className="c-grey">One switch in the Customizer</p>
               </div>
             </div>
           </div>
           <div className="col-lg-4 m-y-24">
             <div className="flex aic">
-              <PiCurrencyDollarLight size={56} color={blue} />
+              <PiStorefrontLight size={56} color={accent} />
               <div className="p-l-16">
-                <h3 className="title p-y-0">Flexible Models</h3>
-                <p>Time & Material, Dedicated Team</p>
+                <h3 className="title fw-700 p-y-0">WooCommerce</h3>
+                <p className="c-grey">Shop, cart and checkout styled</p>
               </div>
             </div>
           </div>
           <div className="col-lg-4 m-y-24">
             <div className="flex aic">
-              <PiSmileyLight size={56} color={blue} />
+              <PiPlugsConnectedLight size={56} color={accent} />
               <div className="p-l-16">
-                <h3 className="title p-y-0">Ongoing Support</h3>
-                <p>Continuous Compliance Journey</p>
+                <h3 className="title fw-700 p-y-0">Auto Content</h3>
+                <p className="c-grey">Menus, posts and products</p>
               </div>
             </div>
           </div>
           <div className="col-lg-4 m-y-24">
             <div className="flex aic">
-              <PiMedalLight size={56} color={blue} />
+              <PiShieldCheckLight size={56} color={accent} />
               <div className="p-l-16">
-                <h3 className="title p-y-0">25+ Years</h3>
-                <p>Cybersecurity & Compliance</p>
+                <h3 className="title fw-700 p-y-0">WP 6.9+</h3>
+                <p className="c-grey">PHP 8.1+, tested up to WP 7.1</p>
               </div>
             </div>
           </div>
@@ -69,5 +75,4 @@ const About = () => {
     </section>
   )
 }
-
 export { About }

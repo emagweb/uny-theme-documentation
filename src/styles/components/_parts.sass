@@ -1,12 +1,30 @@
 // Navigation
 
+// Fixed, so the guide's navigation is reachable from anywhere in a long page instead of
+// only at the very top. The bar is out of the flow, which is why:
+//   - `.page-content` gains the header height back as padding (see _base.sass), and
+//   - the hero drops the -80/+80 pair it used to need while the header took up space.
+// The tint plus blur is what makes a transparent bar readable once text scrolls under
+// it; without it the links sat on top of paragraphs.
+header
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 1000
+  background: rgba($white, .82)
+  // Standard property only. Writing the -webkit- alias as well left the build with the
+  // prefixed one alone, and Chrome then reported `backdrop-filter: none` - the blur
+  // simply did not happen.
+  backdrop-filter: blur(12px)
+
 .site
   &-nav
     position: relative
     display: flex
     align-items: center
     justify-content: space-between
-    height: 80px
+    height: $header-h
     z-index: 999
     overflow: hidden
     +v-xs
@@ -24,7 +42,7 @@
         display: block
         width: 24px
         height: 2px
-        background-color: $white
+        background-color: $dark
         &.one
           position: absolute
           top: 0
@@ -45,7 +63,7 @@
           display: block
           width: 24px
           height: 2px
-          background-color: $white
+          background-color: $dark
           &.one
             position: absolute
             top: 9px
@@ -63,10 +81,12 @@
             transform: rotate(-45deg)
             transition: all linear .25s
     a
-      color: $white
+      color: $dark
       transition: all ease-out .3s
       &:hover
         color: $blue
+      &.button
+        color: $on-accent
     nav
       +v-sm
         &.visible
@@ -78,7 +98,7 @@
           width: 100%
           height: 100vh
           display: block
-          background: linear-gradient(180deg, #17213c, #301b43)
+          background: linear-gradient(180deg, #0F0F0F, #242424)
           overflow: hidden
           transition: all linear .75s
         &.hidden
@@ -90,7 +110,7 @@
           width: 100%
           height: 100vh
           display: block
-          background: linear-gradient(180deg, #17213c, #301b43)
+          background: linear-gradient(180deg, #0F0F0F, #242424)
           overflow: hidden
           transition: all linear .75s
       a
@@ -101,6 +121,9 @@
           width: 100%
           height: 64px
           padding: 0 40px
+          // The mobile overlay is a dark gradient in both schemes, so its links
+          // use the on-accent token rather than the page-surface one.
+          color: $on-accent
           border-bottom: 1px solid rgba(255,255,255,.05)
         &.button
           &.top
@@ -116,14 +139,22 @@
     display: inline-block
     margin: 0 0 0 12px
     padding: 0
-    color: $blue
+    // The theme paints the site name with `var(--ewut-uny-dark)` - primary ink,
+    // light on a dark scheme (see .ewut-site-header__logo-text in the theme's
+    // main.css). The pink gradient used here reached only 3.7:1 on the dark page
+    // surface and 3.3:1 over the hero artwork, so the docs follow the theme.
+    color: $dark
     font-size: 1.15em
     font-weight: 500
-    background: linear-gradient(90deg, #4E7BF5, #A541FD)
-    background-clip: text
-    -webkit-background-clip: text
-    color: transparent
-    -webkit-text-fill-color: transparent
+
+// Logo lock-up: the mark and the wordmark sit in two separate links, so the
+// figure has to line them up itself. inline-flex + align-items keeps the two
+// centred on one another; the nudge upwards answers the optical weight of the
+// text, whose cap height sits lower than the middle of its line box.
+figure#logo
+  display: inline-flex
+  align-items: center
+  transform: translateY(-1.5px)
 
 // Hero
 
@@ -149,6 +180,45 @@
       display: block
       p
         margin: 8px 0
+  &.bg-hero-bundle
+    // Visible background: the block must end where its content ends, so the
+    // bottom padding goes and the negative margin only cancels the -120px
+    // upward shift above (which is what pulls the artwork under the header).
+    // Full viewport on desktop. The `top: -120px` trick above cannot give an
+    // exact 100vh, because the visible height then depends on where the block
+    // happens to sit in the flow: measuring it gave 980px inside a 900px
+    // viewport. So this variant drops the shift and pulls the artwork under the
+    // header by exactly the header height instead ($header-h, .site-nav) - the
+    // padding puts that space back, so the visible box is 100vh to the pixel.
+    top: 0
+    // The header is `position: fixed` now, so it occupies no space in the flow: the
+    // negative margin that used to pull the artwork under it would push the hero off the
+    // top of the screen. The padding STAYS - it is what keeps the copy centred where it
+    // was. Measured on 1400x900: with padding the heading sits at 321px, exactly as
+    // before the header was fixed; without it the whole block rode 40px higher.
+    margin-top: 0
+    padding-top: $header-h
+    padding-bottom: 0
+    margin-bottom: 0
+    min-height: 100vh
+    display: flex
+    align-items: center
+    // The container becomes a flex item here and would shrink to its content.
+    > .container
+      width: 100%
+    +v-sm
+      // Auto height on phones: 100vh there fights the browser chrome and cuts
+      // the copy off.
+      min-height: auto
+      display: block
+    // `#hero .title-intro` forces left alignment on small screens for the light
+    // hero. Here the whole block is centred, and the heading only INHERITS that,
+    // so the narrow rule wins. Centre it back for this variant.
+    .title-intro
+      +v-xs
+        text-align: center
+        margin-left: auto
+        margin-right: auto
   &.fixed
     padding-top: 200px
   +v-md
@@ -306,7 +376,11 @@
     margin-top: 40px
     background-color: transparent
     border: none
-  *
+  // Everything inside a card takes the card type size, EXCEPT an element that carries
+  // a title class: the heading size belongs to .title-part and is set once, in
+  // _titles.sass. Without the :not() this blanket won on specificity order and the
+  // slider cards rendered their headings 19px against 22.8px everywhere else.
+  *:not([class*="title-"])
     font-size: 1.25em
   &-title
     font-size: 1.75em
@@ -316,7 +390,7 @@
     display: -webkit-box
     -webkit-box-orient: vertical
     -webkit-line-clamp: 10
-    font-size: 1em !important
+    font-size: 0.95rem !important
     overflow: hidden
     &:hover
       -webkit-line-clamp: 15
@@ -373,7 +447,7 @@
   &.step
     border-radius: 12px
     border: 2px solid transparent
-    background: linear-gradient(white, white) padding-box, linear-gradient(90deg, #4E7BF5, #A541FD) border-box
+    background: linear-gradient(white, white) padding-box, linear-gradient(90deg, #E91E8C, #C4177A) border-box
     transition: all ease-out 1s
     +v-md
       min-height: 54vh
@@ -385,7 +459,7 @@
       margin-right: 5%
 
     &:hover
-      background: linear-gradient(white, white) padding-box, linear-gradient(-90deg, #4E7BF5, #A541FD) border-box
+      background: linear-gradient(white, white) padding-box, linear-gradient(-90deg, #E91E8C, #C4177A) border-box
 
 #reviews
   .card-title
@@ -396,10 +470,6 @@
   &.slick
     width: 92%
     margin: 24px 4%
-    .card-title
-      font-size: 1.15em
-    .card-text
-      font-size: 16px
     .icon
       width: 32px
       height: 32px
@@ -567,3 +637,84 @@
     width: 90%
     margin-left: auto
     margin-right: auto
+
+// Cards in a row end at the same line. Bootstrap stretches the COLUMNS to the height of
+// the tallest one, but the card inside a column keeps the height of its own text, so a
+// shorter paragraph left a visible step between neighbours. Only a card (a .bg-light
+// panel that is the single child of a column) is affected: rows whose columns hold an
+// icon and a line of text, or an image, are untouched.
+.row > [class*="col-"] > .bg-light
+  height: 100%
+
+// FAQ accordion on the front page. The question is a real button inside the heading, so
+// the keyboard reaches it and a screen reader announces the open state; the answer is a
+// region tied back to that button by id. Closed answers are hidden with the `hidden`
+// attribute rather than by height, so they are out of the tab order as well as out of
+// sight.
+.accordion
+  &__item
+    border-bottom: 1px solid $border
+  &__head
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 24px 0
+    background: none
+    border: 0
+    color: inherit
+    font: inherit
+    text-align: left
+    cursor: pointer
+    transition: color .2s ease
+    &:hover
+      color: $theme-light
+    &:focus-visible
+      outline: 2px solid $theme-light
+      outline-offset: 4px
+  // Plus that becomes a minus: two bars, and the vertical one turns flat when open.
+  // Keeping one element means nothing shifts when the state changes.
+  &__sign
+    position: relative
+    flex: 0 0 18px
+    width: 18px
+    height: 18px
+    margin-left: 24px
+    &::before,
+    &::after
+      content: ''
+      position: absolute
+      top: 50%
+      left: 0
+      width: 100%
+      height: 2px
+      background: $theme
+      transform: translateY(-50%)
+    &::after
+      transform: translateY(-50%) rotate(90deg)
+      transition: transform .25s ease
+  &__item.is-open &__sign::after
+    transform: translateY(-50%) rotate(0deg)
+  &__body
+    padding-bottom: 24px
+    p
+      margin: 0
+// Below the breakpoint the two columns of the FAQ sit one under the other, and the 40px
+// that separated them on the desktop becomes an indent on the left of the questions
+// only: the intro above them starts at the container edge, the questions 40px further
+// in. Measured on a 390 screen, so the column keeps the padding only while it is a
+// column.
+#faq
+  .p-l-40
+    +v-md
+      // Back to the gutter every other column has, not to zero: zero pushed the questions
+      // out to the very edge while the intro above them stayed on the grid.
+      padding-left: calc(var(--bs-gutter-x) * .5) !important
+
+// Anchor targets stop below the fixed header instead of under it. Without this the
+// heading a link names sits in the 80px the header covers, and the reader arrives at a
+// paragraph whose title is invisible.
+section[id],
+h3[id],
+h4[id]
+  scroll-margin-top: $header-h

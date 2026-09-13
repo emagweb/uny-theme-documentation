@@ -18,14 +18,14 @@
     font-weight: 200
     border-radius: 50px
     border: 2px solid transparent
-    background: linear-gradient(white, white) padding-box, linear-gradient(90deg, #4E7BF5, #A541FD) border-box
+    background: linear-gradient(white, white) padding-box, linear-gradient(90deg, #E91E8C, #C4177A) border-box
     transition: all ease-out 1s
     &:hover
-      background: linear-gradient(white, white) padding-box, linear-gradient(-90deg, #4E7BF5, #A541FD) border-box
+      background: linear-gradient(white, white) padding-box, linear-gradient(-90deg, #E91E8C, #C4177A) border-box
   &-grd
     font-size: 4em
     display: inline-block
-    background: linear-gradient(90deg, #4E7BF5, #A541FD)
+    background: linear-gradient(90deg, #E91E8C, #C4177A)
     background-clip: text
     -webkit-background-clip: text
     color: transparent
@@ -49,14 +49,30 @@
     +v-md
       font-size: 3em
     +v-md
+      // NOTE: second +v-md at the same breakpoint - this one wins and 3em above
+      // never applies. Left as it is, because changing it would change the
+      // current look; the 80% section sizes below are derived from the values
+      // that actually render (4em and 2em).
       font-size: 2em
       line-height: 1.5
+  // Card headings. One size at every width and pure white: below 1024px this used
+  // to drop to 1.02em, which is body text with a bold weight - the cards read as
+  // paragraphs with no headings at all. It is the same class on every card (home,
+  // the five contents cards, the FAQ) and on the headings inside the guides, so the
+  // size is set once here and nothing carries its own.
   &-part
+    color: $on-accent
     font-size: 1.5em
-    +v-md
-      font-size: 1.02em
   &-mini
     font-size: 1.1em
     font-weight: 400
     +v-md
       font-size: 1em
+
+// Section headings read 20% smaller than the hero ones. Same class, different
+// wrapper: the hero lives in div#hero (home) and div#page (inner pages), every
+// other heading sits inside a <section>.
+section .title-intro
+  font-size: 3.2em
+  +v-md
+    font-size: 1.6em

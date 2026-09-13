@@ -5,6 +5,7 @@ html
 body
   margin: 0
   color: $dark
+  background-color: $white
   font-size: 95%
   font-family: $basic
   line-height: 1.5
@@ -38,18 +39,66 @@ nav
   +v-sm
     margin-bottom: -40px
   nav
+    // The links are written with no whitespace between them, so the row had exactly one
+    // place it could break - the space inside "AI Assistant" - and at 390px it broke
+    // there, reading as five links plus a stray word. Forbidding that break alone left
+    // the row unbreakable and Reference ran off the screen. Flex gives every link its
+    // own break point, so the row wraps between labels and never inside one.
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
     a
-      color: $white
+      // Body ink, not heading ink: the footer reads at the same size and colour as the
+      // prose above it, so it closes the page instead of competing with it. Measured
+      // before this change the footer sat at 17px in #F2F2F4 while the guide text is
+      // 15.2px in $grey - brighter and larger than the content it follows.
+      color: $grey
+      white-space: nowrap
       &:hover
-        color: $blue
+        color: $theme-light
 
 .page-content
+  // The fixed header takes no space in the flow, so the first block of an inner page
+  // would start underneath it. Give that height back here rather than to `body`: the
+  // home page needs its hero to keep starting at 0.
+  padding-top: $header-h
+  // The guides now read with the same typography as the cards on the home page:
+  // headings white and one size, body text grey and one size. Before this the pages
+  // used the browser's h3 (1.17em) in body ink and prose at 1.15em, so a heading was
+  // barely larger than the paragraph under it and nothing matched the cards.
   h3
     margin-top: 24px
     margin-bottom: 12px
+    color: $on-accent
+    font-size: 1.5em
+    font-weight: 700
   ul,
   ol
     margin-top: 8px
-    font-size: 1.15em
+    color: $grey
   p
-    font-size: 1.15em
+    color: $grey
+  // The term at the start of a list item does the job of a small heading, so it keeps
+  // the heading colour. Without this it went grey with the rest of the sentence and
+  // the lists lost their scannable left edge.
+  strong
+    color: $on-accent
+  // Two paragraphs in a row ran together with no gap: `p` is reset to margin 0 for the
+  // whole site, and this block only set a size. The rule is deliberately `p + p` rather
+  // than `p`: only the second paragraph of a pair gains a margin, so a paragraph that
+  // follows a heading, a list or an image stays exactly where it was and no existing
+  // page shifts.
+  p + p
+    margin-top: 12px
+  // Links written inside prose (the licence links in the reference, for one) inherited
+  // the body ink and lost their underline, so they read as plain text and nobody would
+  // click them. `:not([class])` keeps this away from the buttons and the accent links,
+  // which carry a class and style themselves. $theme-light rather than $theme: the solid
+  // brand pink measures 3.66:1 on these surfaces, this one 5.03:1.
+  p a:not([class]),
+  li a:not([class])
+    color: $theme-light
+    border-bottom: 1px dotted rgba($theme-light, .5)
+    transition: all ease .3s
+    &:hover
+      border-bottom-color: transparent

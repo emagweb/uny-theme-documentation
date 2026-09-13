@@ -1,12 +1,17 @@
 {
-  "short_name": "Rogovsky Studio",
-  "name": "Hire vetted Middle and Senior software developers for startups.",
-  "description": "Hire vetted Middle and Senior software developers for startups. Fast matching, transparent hourly rates, risk-free trial week and dedicated account manager. Scale your product with top remote engineers.",
+  "short_name": "Uny AI Docs",
+  "name": "Uny AI Documentation",
+  "description": "Official documentation for Uny AI - Theme with Flexible Section Builder: installation, demo import, Theme Customizer, 214 ready sections, Auto Layout, the AI assistant and WooCommerce.",
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "icon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
     },
     {
       "src": "logo192.png",
@@ -23,6 +28,6 @@
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "#282828",
+  "theme_color": "#0F0F0F",
   "background_color": "#ffffff"
 }
