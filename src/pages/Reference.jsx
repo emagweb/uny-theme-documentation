@@ -94,6 +94,7 @@ const Reference = () => {
             <section>
               <h3>7. Getting help</h3>
               <p>If none of the above covers your case, write to us through your purchase account. Include the page URL, a screenshot and a line about what you expected to happen - it usually turns a long exchange into a single reply.</p>
+              <br />
               <p className="flex aic rowrap m-t-24">
                 <a href="/" className="button m-r-24">Back to overview</a>
                 <a href="https://demo-one-uny-theme.dvostok.com/" target="_blank" rel="noopener noreferrer" className="button outline">Live demo</a>
