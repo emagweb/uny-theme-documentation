@@ -24,7 +24,7 @@ const Builder = () => {
       <main className='page-content'>
         <HeroMini
           title="The Builder"
-          text="214 sections in 15 groups, edited straight on the page - on pages and on blog posts alike. How to insert, fill and reorder them, how the blocks pull in your menus, posts and products by themselves, and the two ways to have a page drafted for you."
+          text="214 sections in 15 groups, edited straight on the page - on pages and on blog posts alike. How to insert, fill and reorder them, how the blocks pull in your menus, posts and products by themselves, and the three ways to fill a page: by hand, by the generator, or by an AI chat."
         />
         <div className="container m-b-120">
           <div className="row col-lg-10 ma">
@@ -113,13 +113,18 @@ const Builder = () => {
 
             <section id="autolayout">
               <h3>8. Auto Layout</h3>
-              <p>On a page with no sections yet, the builder offers to draft one for you.</p>
-              <img src={shotAutoEmpty} alt="The Auto Layout offer on an empty page" className={shot} style={shotStyle} />
-              <p>Describe the page in a line - a shop, a services page, a product page - and the builder composes a matching sequence of sections.</p>
-              <img src={shotAutoModal} alt="The Auto Layout dialog" className={shot} style={shotStyle} />
+              <p>A page with no sections yet does not sit there empty. It offers you the three ways of filling it, side by side:</p>
+              <img src={shotAutoEmpty} alt="The empty builder canvas offering three ways to fill the page" className={shot} style={shotStyle} />
+              <ul>
+                <li><strong>Add the sections yourself</strong> - pick them from the groups in the sidebar, in any order you like.</li>
+                <li><strong>Lay out this page automatically</strong> - press Start and answer one question; the generator picks the blocks and their order.</li>
+                <li><strong>Ask an AI assistant to build it</strong> - the chat route described in the <a href="/assistant">Assistant</a> guide, which fills in the words as well.</li>
+              </ul>
+              <p>Press <strong>Start</strong> on the middle card and the generator asks what the page is about - a product, a services page, a shop, or something you describe in your own words:</p>
+              <img src={shotAutoModal} alt="The Auto Layout dialog asking what the page is about" className={shot} style={shotStyle} />
               <p>Two things worth knowing:</p>
               <ul>
-                <li>It only offers itself on an empty page, and it asks before doing anything. Your existing sections are never overwritten.</li>
+                <li>The offer only appears on an empty page, and it asks before doing anything. Your existing sections are never overwritten.</li>
                 <li>The result is an ordinary set of sections. Reorder, replace or delete any of them exactly as if you had inserted them by hand. It is a starting point, not a template you are locked into.</li>
               </ul>
             </section>
@@ -129,9 +134,10 @@ const Builder = () => {
               <p>Colours, fonts and background shades are set once for every section, on <strong>Uny Builder, Settings</strong>. Nine cards, and the useful part is what happens when you leave a field empty.</p>
               <img src={shotSettings} alt="The builder settings screen with the colour palette" className={shot} style={shotStyle} />
               <ul>
-                <li><strong>Colors.</strong> Nine roles - accent, accent hover, dark, grey, medium, light, muted, border, border dark. An empty field inherits: first from the Uny theme, then from the brand default, and the label beside each field tells you which of those is currently painting your sections. So on a Uny site you change the accent in the Customizer and the sections follow, with nothing to set twice.</li>
+                <li><strong>Palette.</strong> The first control on the Colors card, and the one that decides the most: <em>Follow the theme</em>, <em>Always light</em> or <em>Always dark</em>. It sets what "unset" means for every colour below, so one choice gives you a coherent dark set of sections. Follow the theme takes the scheme from the Customizer, which is what you want on a Uny site; the two fixed options are for sites running another theme, or for keeping sections dark while the rest of the site is light.</li>
+                <li><strong>Colors.</strong> Twelve roles - accent, accent hover, surface, dark, headings, captions, grey, medium, light, muted, border and border dark. An empty field inherits: first from the palette chosen above, then from the Uny theme, then from the brand default, and the label beside each field shows the colour the section will actually be painted with, along with where it came from. So on a Uny site you change the accent in the Customizer and the sections follow, with nothing to set twice. A colour typed into a field always wins, whichever palette is active.</li>
                 <li><strong>Backgrounds.</strong> The two alternative shades offered by the per-section background picker. White, light and dark are fixed; these are the ones you choose. Leave the light alternative empty and it tracks your accent as a very pale wash, which is how a page gets a tint of your brand without you picking a colour at all.</li>
-                <li><strong>Typography.</strong> Twenty-one Google fonts in a list, or type any family name from fonts.google.com yourself. Empty follows the theme.</li>
+                <li><strong>Typography.</strong> Twenty-one Google fonts in a list, or type any family name from fonts.google.com yourself. Empty follows the theme. The first item, <strong>System fonts (no external request)</strong>, asks Google for nothing and sets the sections in the fonts the visitor already has - both on the front end and in the builder canvas, so what you edit is what you publish. The custom field is ignored while it is selected.</li>
                 <li><strong>Logo.</strong> How the brand appears in navigation and footer sections: image with the site name, image only, or name only. The image itself comes from Site Identity in the Customizer.</li>
                 <li><strong>Rendering</strong> reports how pages are assembled on this site - nothing to set, it is there to answer the question rather than make you guess.</li>
                 <li><strong>AI Assistant</strong> shows whether the assistant can run here and links to its own screen.</li>

@@ -50,7 +50,7 @@ const chapters = [
     id: 6,
     name: 'Settings',
     job: 'Part 6',
-    text: 'The builder admin screen, where colours, fonts and background shades are set once for every section: nine colour roles with your own hex values, the two alternative background shades, twenty-one Google fonts or any family you name, and how the logo appears in navigation and footer blocks. Leave a field empty and it inherits from the theme, so an accent changed in the Customizer moves the sections with it.',
+    text: 'The builder admin screen, where colours, fonts and background shades are set once for every section: the light or dark palette the sections start from, twelve colour roles with your own hex values, the two alternative background shades, twenty-one Google fonts or the system fonts of the visitor, and how the logo appears in navigation and footer blocks. Leave a field empty and it inherits from the theme, so an accent changed in the Customizer moves the sections with it.',
     pic: shotSettings,
     link: '/builder#settings'
   }

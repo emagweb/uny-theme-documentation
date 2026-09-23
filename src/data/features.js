@@ -64,7 +64,7 @@ const features = [
   {
     id: 11,
     title: "Demo content included",
-    text: "Import the demo pages, posts, menus and images, and you have the live demo on your own installation - ready to take apart block by block and turn into your own site.",
+    text: "Two importable files, one for the light demo and one for the dark. Bring in the pages, posts, menus and images, and you have the live demo on your own installation - ready to take apart block by block.",
     icon: PiDownloadSimpleLight
   },
   {

@@ -31,12 +31,16 @@ const Theme = () => {
             <section>
               <h3>1. What is in the package</h3>
               <p>The download contains the theme itself and the plugins that extend it. The theme renders your site; the builder adds the section library on top of it. They are separate pieces on purpose, so each keeps working without the other.</p>
+              <p>Unpack the file you downloaded and you get folders, not archives, which is what the marketplace allows:</p>
               <ul>
-                <li><strong>Uny theme</strong> - the WordPress theme: templates, palette, typography, blog, WooCommerce styling.</li>
-                <li><strong>Uny Builder</strong> - the plugin with 214 sections in 15 groups and the Auto Layout generator.</li>
-                <li><strong>EWD Widgets</strong> - a small companion plugin that adds the Random Posts widget.</li>
-                <li><strong>Demo content</strong> - the pages, posts, menus and images you see on the live demo.</li>
+                <li><strong>uny</strong> - the WordPress theme: templates, palette, typography, blog, WooCommerce styling.</li>
+                <li><strong>uny-child</strong> - the child theme. Use it if you plan to edit template files, so an update of the parent does not overwrite your work.</li>
+                <li><strong>ewub-uny-builder</strong> - the plugin with 214 sections in 15 groups and the Auto Layout generator.</li>
+                <li><strong>ewd-widgets</strong> - a small companion plugin that adds the Random Posts widget.</li>
+                <li><strong>demo-content-light.xml</strong> and <strong>demo-content-dark.xml</strong> - the demo site, one file per colour scheme. Import one of them, not both.</li>
+                <li><strong>Documentation.txt</strong> - the address of this guide.</li>
               </ul>
+              <p>WordPress installs a theme and a plugin from a ZIP, and it cannot take a folder through the admin screen. So the theme arrives as an archive of its own for that purpose, and the two plugins are offered as archives on the recommended plugins screen described in step 4. Nothing in the package is an archive inside an archive.</p>
             </section>
 
             <section>
@@ -70,6 +74,13 @@ const Theme = () => {
             <section>
               <h3>5. Importing the demo content</h3>
               <p>The importer brings in the demo pages, posts, menus and images. It is the fastest way to understand the theme: you get the live demo on your own installation and can take it apart block by block.</p>
+              <p>There are two demo files, one per colour scheme, and they differ in the palette the pages are built around:</p>
+              <ul>
+                <li><strong>demo-content-light.xml</strong> - the light demo, the one at <a href="https://demo-one-uny-theme.dvostok.com" target="_blank" rel="noreferrer">demo one</a>.</li>
+                <li><strong>demo-content-dark.xml</strong> - the dark demo, the one at <a href="https://demo-two-uny-theme.dvostok.com" target="_blank" rel="noreferrer">demo two</a>.</li>
+              </ul>
+              <p>Import ONE of them. They hold the same pages, so importing both leaves you with two copies of everything. Pick the scheme you want to start from - it is a radio button in the Customizer afterwards either way, and switching it does not require a different import.</p>
+              <p>Run the import under <strong>Tools, Import, WordPress</strong>, with <strong>Download and import file attachments</strong> ticked so the images come across.</p>
               <ul>
                 <li>Import into a clean installation when you can. On a site that already has content the demo adds to it rather than replacing it.</li>
                 <li>Give it time. Images are downloaded one by one, so a slow host can take several minutes.</li>
@@ -106,6 +117,9 @@ const Theme = () => {
 
               <h3>Typography</h3>
               <p><strong>Font Family</strong> offers a list of Google fonts - Inter, Roboto, Lato, Poppins, Montserrat, Raleway, Nunito, Merriweather, Outfit, Syne, Manrope, Figtree, Geist and others. <strong>Custom Google Font name</strong> takes any other Google font by name if yours is not in the list.</p>
+              <p>The first item on the list is <strong>System fonts (no external request)</strong>, and it is there for sites that must not contact anybody. Choose it and the theme asks Google for nothing: no stylesheet, no preconnect or dns-prefetch hint, no font file. Pages are set in the typefaces the visitor's own device already has - San Francisco on a Mac or iPhone, Segoe UI on Windows, Roboto on Android. Nothing else in the theme calls a third-party host, so with this option a Uny site makes no external requests at all, which is usually what a GDPR review is asking about. The pages also render a fraction faster, since there is no font to wait for.</p>
+              <p>The <strong>Custom Google Font name</strong> field is ignored while System fonts is selected. That is deliberate: a family name left over in the field must not quietly switch the outside request back on.</p>
+              <p>The builder has the same option for its sections, on <strong>Uny Builder, Settings, Typography</strong>. Set both if you use the builder, because the plugin setting governs the sections and the theme setting governs the rest of the site.</p>
               <img src={shotTypography} alt="The Typography section of the Customizer" className={shot} style={shotStyle} />
 
               <h3>Header / Logo</h3>

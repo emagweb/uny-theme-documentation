@@ -60,6 +60,8 @@ const Reference = () => {
                 <li><strong>Commerce sections are empty.</strong> WooCommerce is inactive, or the catalogue has no published products.</li>
                 <li><strong>Contact details show the sample phone and address.</strong> They are editable fields on the contact block itself - click the line in the builder and type your own.</li>
                 <li><strong>Colours look off after switching scheme.</strong> The scheme resets the starting shades. Set Color scheme first, then adjust individual colours.</li>
+                <li><strong>Sections stay light on a dark site, or the other way round.</strong> The builder has a palette of its own, on Uny Builder, Settings, Colors. Set it to Follow the theme and the sections take the scheme from the Customizer.</li>
+                <li><strong>The site still asks Google for a font.</strong> The switch is in two places and both matter: Appearance, Customize, Typography for the theme, and Uny Builder, Settings, Typography for the sections. Choose System fonts (no external request) in both. A family name left in the custom field does not override it.</li>
                 <li><strong>The import stalls.</strong> Run it again - imported items are skipped, and slow hosts often need a second pass to finish downloading images.</li>
                 <li><strong>Your chat assistant sees no tools.</strong> The module is off, every tool is switched off, or the client started before you connected it. The assistant chapter covers this in full.</li>
                 <li><strong>No Application Passwords in your profile.</strong> WordPress only offers them on a site served over HTTPS. That affects the AI assistant only; nothing else needs them.</li>
@@ -79,6 +81,13 @@ const Reference = () => {
                 <li><strong>WordPress MCP Adapter</strong> and <strong>PHP MCP Schema</strong> - serve the endpoint the AI assistant connects to. <a href="http://www.gnu.org/licenses/gpl-2.0.html" target="_blank" rel="noopener noreferrer">GPLv2</a>.</li>
                 <li><strong>Google Fonts</strong> - the selectable body and heading fonts. <a href="https://openfontlicense.org/open-font-license-official-text/" target="_blank" rel="noopener noreferrer">SIL Open Font License 1.1</a>.</li>
               </ul>
+              <h4 className="title-part fw-700 m-t-24 m-b-8">What leaves your visitor's browser</h4>
+              <p>Every library above is served from your own site. Two things are fetched from somebody else's server, and because that means a request carrying your visitor's IP address and user agent, both are named here plainly so you can decide about them:</p>
+              <ul>
+                <li><strong>The typeface, from fonts.googleapis.com and fonts.gstatic.com.</strong> Google receives the IP address and user agent of each visitor whose browser asks for the font. You can switch this off completely: choose <strong>System fonts (no external request)</strong> under Appearance, Customize, Typography, and the same option under Uny Builder, Settings, Typography. Pages are then set in the fonts already on the visitor's device and nothing is requested.</li>
+                <li><strong>Map tiles, from OpenFreeMap.</strong> Only on pages that actually place one of the map sections, and only for visitors who reach such a page. OpenFreeMap receives the IP address and the area being viewed. Leave the map sections out of your pages and nothing is requested. There is no API key and no account involved.</li>
+              </ul>
+              <p>Nothing else in the theme or the builder contacts a third party. No analytics, no telemetry, no phoning home: the purchase code goes to our download server only when you press Activate on the licence screen, and only to fetch the two plugins.</p>
             </section>
 
             <section>

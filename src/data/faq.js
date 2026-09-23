@@ -32,7 +32,7 @@ const faq = [
   {
     id: 7,
     question: "How do I get the demo content?",
-    answer: "Install the recommended plugins, then run the importer described in the Theme guide. It brings in the demo pages, posts, menus and images so you can take the live demo apart and rebuild it into your own site."
+    answer: "Two files come with the download, one per colour scheme: demo-content-light.xml and demo-content-dark.xml. Install the recommended plugins, then import ONE of them under Tools, Import, WordPress, as described in the Theme guide. Both hold the same pages, so importing both would leave you with two copies of everything. It brings in the demo pages, posts, menus and images so you can take the live demo apart and rebuild it into your own site."
   },
   {
     id: 8,
