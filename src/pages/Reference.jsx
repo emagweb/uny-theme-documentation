@@ -8,6 +8,10 @@ import shotWidgetFront from '../assets/img/docs/doc-21-random-posts-front.jpg'
 const shot = "r-8 m-y-24 shadow-sm"
 const shotStyle = { display: 'block', width: '100%', height: 'auto' }
 
+// See the note in Theme.jsx: `gpl` is the edition with no licence key, where both bundled
+// plugins ship as zip files inside the archive.
+const GPL = process.env.DOCS_EDITION === 'gpl'
+
 const Reference = () => {
   return (
     <>
@@ -54,7 +58,7 @@ const Reference = () => {
             <section>
               <h3>4. If something looks wrong</h3>
               <ul>
-                <li><strong>"Stylesheet is missing" when installing the theme.</strong> You uploaded the outer package archive. Unpack it and upload the theme folder archive inside.</li>
+                <li><strong>"Stylesheet is missing" when installing the theme.</strong> You uploaded the outer package archive. Unpack it and upload {GPL ? <><strong>uny.zip</strong> from inside it</> : 'the theme folder archive inside'}.</li>
                 <li><strong>Demo pages come in empty.</strong> The builder was not active during the import. Activate it and run the import again.</li>
                 <li><strong>A navigation section shows no links.</strong> No menu is assigned to that location under Appearance, Menus.</li>
                 <li><strong>Commerce sections are empty.</strong> WooCommerce is inactive, or the catalogue has no published products.</li>
@@ -87,7 +91,11 @@ const Reference = () => {
                 <li><strong>The typeface, from fonts.googleapis.com and fonts.gstatic.com.</strong> Google receives the IP address and user agent of each visitor whose browser asks for the font. You can switch this off completely: choose <strong>System fonts (no external request)</strong> under Appearance, Customize, Typography, and the same option under Uny Builder, Settings, Typography. Pages are then set in the fonts already on the visitor's device and nothing is requested.</li>
                 <li><strong>Map tiles, from OpenFreeMap.</strong> Only on pages that actually place one of the map sections, and only for visitors who reach such a page. OpenFreeMap receives the IP address and the area being viewed. Leave the map sections out of your pages and nothing is requested. There is no API key and no account involved.</li>
               </ul>
-              <p>Nothing else in the theme or the builder contacts a third party. No analytics, no telemetry, no phoning home: the purchase code goes to our download server only when you press Activate on the licence screen, and only to fetch the two plugins.</p>
+              {GPL ? (
+                <p>Nothing else in the theme or the builder contacts a third party. No analytics, no telemetry, no phoning home, and no licence check: there is no key in this edition and nothing is ever sent to us.</p>
+              ) : (
+                <p>Nothing else in the theme or the builder contacts a third party. No analytics, no telemetry, no phoning home: the purchase code goes to our download server only when you press Activate on the licence screen, and only to fetch the two plugins.</p>
+              )}
             </section>
 
             <section>

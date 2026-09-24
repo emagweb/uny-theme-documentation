@@ -16,6 +16,18 @@ import shotShop from '../assets/img/docs/doc-22-woocommerce-shop.jpg'
 const shot = "r-8 m-y-24 shadow-sm"
 const shotStyle = { display: 'block', width: '100%', height: 'auto' }
 
+/**
+ * The edition this build describes, set in rsbuild.config.js.
+ *
+ * `gpl` is the one licensed entirely under the GPL: the two bundled plugins travel in the
+ * archive as zip files, there is no purchase code and no activation screen. The default
+ * edition downloads them from our server once a code has been entered.
+ *
+ * Only the package contents and the plugin-installation step differ. Everything else on
+ * this page is the same product, so it is written once.
+ */
+const GPL = process.env.DOCS_EDITION === 'gpl'
+
 const Theme = () => {
   return (
     <>
@@ -31,16 +43,33 @@ const Theme = () => {
             <section>
               <h3>1. What is in the package</h3>
               <p>The download contains the theme itself and the plugins that extend it. The theme renders your site; the builder adds the section library on top of it. They are separate pieces on purpose, so each keeps working without the other.</p>
-              <p>Unpack the file you downloaded and you get folders, not archives, which is what the marketplace allows:</p>
-              <ul>
-                <li><strong>uny</strong> - the WordPress theme: templates, palette, typography, blog, WooCommerce styling.</li>
-                <li><strong>uny-child</strong> - the child theme. Use it if you plan to edit template files, so an update of the parent does not overwrite your work.</li>
-                <li><strong>ewub-uny-builder</strong> - the plugin with 214 sections in 15 groups and the Auto Layout generator.</li>
-                <li><strong>ewd-widgets</strong> - a small companion plugin that adds the Random Posts widget.</li>
-                <li><strong>demo-content-light.xml</strong> and <strong>demo-content-dark.xml</strong> - the demo site, one file per colour scheme. Import one of them, not both.</li>
-                <li><strong>Documentation.txt</strong> - the address of this guide.</li>
-              </ul>
-              <p>WordPress installs a theme and a plugin from a ZIP, and it cannot take a folder through the admin screen. So the theme arrives as an archive of its own for that purpose, and the two plugins are offered as archives on the recommended plugins screen described in step 4. Nothing in the package is an archive inside an archive.</p>
+              {GPL ? (
+                <>
+                  <p>Unpack the file you downloaded and every part is already in the form the WordPress upload screens expect:</p>
+                  <ul>
+                    <li><strong>uny.zip</strong> - the WordPress theme: templates, palette, typography, blog, WooCommerce styling.</li>
+                    <li><strong>uny-child.zip</strong> - the child theme. Use it if you plan to edit template files, so an update of the parent does not overwrite your work.</li>
+                    <li><strong>ewub-uny-builder.zip</strong> - the plugin with 214 sections in 15 groups and the Auto Layout generator.</li>
+                    <li><strong>ewd-widgets.zip</strong> - a small companion plugin that adds the Random Posts widget.</li>
+                    <li><strong>demo-content-light.xml</strong> and <strong>demo-content-dark.xml</strong> - the demo site, one file per colour scheme. Import one of them, not both.</li>
+                    <li><strong>Documentation.txt</strong> - the installation steps in brief, and the address of this guide online.</li>
+                  </ul>
+                  <p>WordPress installs a theme and a plugin from a zip and cannot take a folder through the admin screen, which is why each piece is a zip of its own. Nothing here has to be unpacked a second time.</p>
+                </>
+              ) : (
+                <>
+                  <p>Unpack the file you downloaded and you get folders, not archives, which is what the marketplace allows:</p>
+                  <ul>
+                    <li><strong>uny</strong> - the WordPress theme: templates, palette, typography, blog, WooCommerce styling.</li>
+                    <li><strong>uny-child</strong> - the child theme. Use it if you plan to edit template files, so an update of the parent does not overwrite your work.</li>
+                    <li><strong>ewub-uny-builder</strong> - the plugin with 214 sections in 15 groups and the Auto Layout generator.</li>
+                    <li><strong>ewd-widgets</strong> - a small companion plugin that adds the Random Posts widget.</li>
+                    <li><strong>demo-content-light.xml</strong> and <strong>demo-content-dark.xml</strong> - the demo site, one file per colour scheme. Import one of them, not both.</li>
+                    <li><strong>Documentation.txt</strong> - the address of this guide.</li>
+                  </ul>
+                  <p>WordPress installs a theme and a plugin from a ZIP, and it cannot take a folder through the admin screen. So the theme arrives as an archive of its own for that purpose, and the two plugins are offered as archives on the recommended plugins screen described in step 4. Nothing in the package is an archive inside an archive.</p>
+                </>
+              )}
             </section>
 
             <section>
@@ -56,19 +85,36 @@ const Theme = () => {
 
             <section>
               <h3>3. Installing the theme</h3>
-              <p>Go to <strong>Appearance, Themes, Add New, Upload Theme</strong> and pick the theme archive, then press Install and Activate.</p>
+              <p>Go to <strong>Appearance, Themes, Add New, Upload Theme</strong> and pick {GPL ? <strong>uny.zip</strong> : 'the theme archive'}, then press Install and Activate.</p>
               <img src={shotInstall} alt="Uploading the theme archive in Appearance, Themes, Add New" className={shot} style={shotStyle} />
-              <p>Upload the theme archive, not the whole package you downloaded. If WordPress reports a missing stylesheet, you have handed it the outer archive - unpack it first and use the theme folder archive inside.</p>
+              <p>Upload the theme archive, not the whole package you downloaded. If WordPress reports a missing stylesheet, you have handed it the outer archive - unpack it first and use {GPL ? <strong>uny.zip</strong> : 'the theme folder archive'} from inside it.</p>
+              <p>The child theme is optional and installs the same way, from {GPL ? <strong>uny-child.zip</strong> : 'the child theme archive'}. Activate the child instead of the parent, not as well as it.</p>
             </section>
 
             <section>
               <h3>4. Installing the plugins</h3>
-              <p>After activation the theme prompts you to install its recommended plugins. The screen lives at <strong>Appearance, Install Plugins</strong> if you dismissed the notice.</p>
-              <img src={shotPlugins} alt="The recommended plugins screen listing all eight plugins waiting to be installed" className={shot} style={shotStyle} />
-              <p>Eight are offered, and none of them is compulsory. All eight install from this screen without touching a file: tick the ones you want, choose Install from the Bulk actions menu, then activate them the same way. <strong>Uny Builder</strong> and <strong>EWD Widgets</strong> are ours, which is why their source reads External Source; the other six come from the WordPress plugin directory - Contact Form 7, WooCommerce, Safe SVG, Nextend Social Login, WPConsent Cookie Banner and WordPress Importer.</p>
-              <p>The two that are ours are downloaded from our own server rather than from the WordPress directory, so they ask for your purchase code once. Open <strong>Appearance, License Activation</strong>, paste the code and press Activate; installing then works exactly as it does for the other six. The code is in your Envato account under Downloads, next to this item, as <em>Licence certificate and purchase code</em>. Everything else in the theme works without it - the code only unlocks these downloads, updates and the demo import.</p>
-              <p>If your host does not let WordPress write files on its own and asks for FTP details, the same screen offers each of our plugins as a zip. Download it there and add it through <strong>Plugins, Add New, Upload Plugin</strong>; the result is the same.</p>
-              <p>Two of them matter before you import the demo. <strong>Uny Builder</strong> has to be active, because the demo pages are made of builder sections and would otherwise arrive as empty content, and <strong>WordPress Importer</strong> is what runs the import. Add <strong>WooCommerce</strong> as well if you want the shop pages and the commerce sections to have products to show. The rest can wait until you need them.</p>
+
+              {GPL ? (
+                <>
+                  <p>Two plugins come with the theme, and both go in the same way: <strong>Plugins, Add New, Upload Plugin</strong>, pick the zip, press Install Now, then Activate.</p>
+                  <ul>
+                    <li><strong>ewub-uny-builder.zip</strong> - Uny Builder, the section library. Install this one before anything else: the demo pages are built from its sections.</li>
+                    <li><strong>ewd-widgets.zip</strong> - EWD Widgets, the Random Posts widget the demo sidebar uses.</li>
+                  </ul>
+                  <p>There is no licence key to enter and no activation screen to find. This edition is licensed entirely under the GPL, so both plugins are simply yours, in the archive, next to the theme.</p>
+                  <p>Six more plugins are offered, all optional and all from the WordPress directory, on <strong>Appearance, Install Plugins</strong>: Contact Form 7, WooCommerce, Safe SVG, Nextend Social Login, WPConsent Cookie Banner and WordPress Importer. Tick the ones you want, choose Install from the Bulk actions menu, then activate them the same way.</p>
+                  <p>Two things matter before you import the demo. <strong>Uny Builder</strong> has to be active, because the demo pages are made of builder sections and would otherwise arrive as empty content, and <strong>WordPress Importer</strong> is what runs the import. Add <strong>WooCommerce</strong> as well if you want the shop pages and the commerce sections to have products to show. The rest can wait until you need them.</p>
+                </>
+              ) : (
+                <>
+                  <p>After activation the theme prompts you to install its recommended plugins. The screen lives at <strong>Appearance, Install Plugins</strong> if you dismissed the notice.</p>
+                  <img src={shotPlugins} alt="The recommended plugins screen listing all eight plugins waiting to be installed" className={shot} style={shotStyle} />
+                  <p>Eight are offered, and none of them is compulsory. All eight install from this screen without touching a file: tick the ones you want, choose Install from the Bulk actions menu, then activate them the same way. <strong>Uny Builder</strong> and <strong>EWD Widgets</strong> are ours, which is why their source reads External Source; the other six come from the WordPress plugin directory - Contact Form 7, WooCommerce, Safe SVG, Nextend Social Login, WPConsent Cookie Banner and WordPress Importer.</p>
+                  <p>The two that are ours are downloaded from our own server rather than from the WordPress directory, so they ask for your purchase code once. Open <strong>Appearance, License Activation</strong>, paste the code and press Activate; installing then works exactly as it does for the other six. The code is in your Envato account under Downloads, next to this item, as <em>Licence certificate and purchase code</em>. Everything else in the theme works without it - the code only unlocks these downloads, updates and the demo import.</p>
+                  <p>If your host does not let WordPress write files on its own and asks for FTP details, the same screen offers each of our plugins as a zip. Download it there and add it through <strong>Plugins, Add New, Upload Plugin</strong>; the result is the same.</p>
+                  <p>Two of them matter before you import the demo. <strong>Uny Builder</strong> has to be active, because the demo pages are made of builder sections and would otherwise arrive as empty content, and <strong>WordPress Importer</strong> is what runs the import. Add <strong>WooCommerce</strong> as well if you want the shop pages and the commerce sections to have products to show. The rest can wait until you need them.</p>
+                </>
+              )}
             </section>
 
             <section>

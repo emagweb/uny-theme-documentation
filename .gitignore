@@ -7,6 +7,9 @@
 node_modules
 dist/
 build/
+# The offline copy that goes into the product archive, made with DOCS_TARGET=offline.
+# A build artefact like build/, so it is not committed either.
+build-offline/
 
 # Profile
 .rspack-profile-*/

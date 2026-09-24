@@ -36,10 +36,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- Icons -->
-  <link rel="icon" href="/documentation/favicon.ico" />
-  <link rel="icon" type="image/svg+xml" href="/documentation/icon.svg" />
-  <link rel="apple-touch-icon" href="/documentation/logo192.png" />
-  <link rel="manifest" href="/documentation/manifest.json" />
+  <!-- Relative on purpose, so one file serves both builds. Online, index.html sits in
+       /documentation/, so `favicon.ico` resolves to /documentation/favicon.ico exactly as
+       the absolute path did. Offline the page is opened from a folder, where an absolute
+       path would be read as the root of the disk and the icon would be missing. -->
+  <link rel="icon" href="favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="icon.svg" />
+  <link rel="apple-touch-icon" href="logo192.png" />
+  <link rel="manifest" href="manifest.json" />
 </head>
 <body>
   <div id="root"></div>
