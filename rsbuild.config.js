@@ -23,7 +23,24 @@ const OFFLINE = process.env.DOCS_TARGET === "offline";
 //
 // Empty during `yarn start`, so the dev server keeps working at the root of localhost,
 // and empty offline, where there is no prefix to speak of.
-const BASE = !OFFLINE && process.env.NODE_ENV === "production" ? "/documentation" : "";
+//
+// DOCS_BASE overrides the subfolder, because the guide is not always served from one:
+//
+//   yarn build                 -> /documentation/ on uny-theme.dvostok.com
+//   DOCS_BASE=/ yarn build     -> the root of a domain of its own, uny-doc.dvostok.com
+//   DOCS_TARGET=offline ...    -> a folder on the buyer's disk, relative paths
+//
+// Getting this wrong is not a small mistake and it does not look like one: the built
+// index.html asks for /documentation/static/... , the host has no such path, its rewrite
+// answers index.html instead, and the browser refuses HTML where it expected CSS and
+// JavaScript. The page then renders white while every URL still answers 200.
+const RAW_BASE = process.env.DOCS_BASE ?? "/documentation";
+
+// A single slash means the root, which as a prefix is the same as no prefix at all.
+const SUBFOLDER = RAW_BASE === "/" ? "" : RAW_BASE.replace(/\/$/, "");
+
+// const BASE = !OFFLINE && process.env.NODE_ENV === "production" ? SUBFOLDER : "";
+const BASE = "";
 
 // The offline copy is written next to the online one rather than over it, so a build for
 // the archive never destroys the build that is about to be published.
