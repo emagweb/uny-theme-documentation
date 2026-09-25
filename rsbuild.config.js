@@ -23,24 +23,8 @@ const OFFLINE = process.env.DOCS_TARGET === "offline";
 //
 // Empty during `yarn start`, so the dev server keeps working at the root of localhost,
 // and empty offline, where there is no prefix to speak of.
-//
-// DOCS_BASE overrides the subfolder, because the guide is not always served from one:
-//
-//   yarn build                 -> /documentation/ on uny-theme.dvostok.com
-//   DOCS_BASE=/ yarn build     -> the root of a domain of its own, uny-doc.dvostok.com
-//   DOCS_TARGET=offline ...    -> a folder on the buyer's disk, relative paths
-//
-// Getting this wrong is not a small mistake and it does not look like one: the built
-// index.html asks for /documentation/static/... , the host has no such path, its rewrite
-// answers index.html instead, and the browser refuses HTML where it expected CSS and
-// JavaScript. The page then renders white while every URL still answers 200.
-const RAW_BASE = process.env.DOCS_BASE ?? "/documentation";
-
-// A single slash means the root, which as a prefix is the same as no prefix at all.
-const SUBFOLDER = RAW_BASE === "/" ? "" : RAW_BASE.replace(/\/$/, "");
-
-// const BASE = !OFFLINE && process.env.NODE_ENV === "production" ? SUBFOLDER : "";
-const BASE = "";
+const BASE =
+  !OFFLINE && process.env.NODE_ENV === "production" ? "/documentation" : "";
 
 // The offline copy is written next to the online one rather than over it, so a build for
 // the archive never destroys the build that is about to be published.
@@ -57,40 +41,40 @@ export default defineConfig({
   plugins: [pluginReact(), pluginSass()],
   source: {
     entry: {
-      index: './src/index.jsx',
+      index: "./src/index.jsx",
     },
 
     // rsbuild does NOT provide process.env.PUBLIC_URL of its own accord - the first attempt
     // relied on it and the name survived into the bundle unreplaced, leaving the basename
     // empty. Defined explicitly instead.
     define: {
-      'process.env.DOCS_BASENAME': JSON.stringify(BASE),
-      'process.env.DOCS_ROUTER': JSON.stringify(OFFLINE ? 'hash' : 'browser'),
-      'process.env.DOCS_EDITION': JSON.stringify(EDITION),
+      "process.env.DOCS_BASENAME": JSON.stringify(BASE),
+      "process.env.DOCS_ROUTER": JSON.stringify(OFFLINE ? "hash" : "browser"),
+      "process.env.DOCS_EDITION": JSON.stringify(EDITION),
     },
   },
   html: {
-    template: './public/index.html'
+    template: "./public/index.html",
   },
   tools: {
     rspack: {
       optimization: {
         minimizer: [
-          '...',
+          "...",
           new ImageMinimizerPlugin({
-            use: 'jpeg',
-            test: /\.(?:jpg|jpeg)$/
+            use: "jpeg",
+            test: /\.(?:jpg|jpeg)$/,
           }),
           new ImageMinimizerPlugin({
-            use: 'png',
-            test: /\.png$/
+            use: "png",
+            test: /\.png$/,
           }),
           new ImageMinimizerPlugin({
-            use: 'avif',
-            test: /\.avif$/
+            use: "avif",
+            test: /\.avif$/,
           }),
           new ImageMinimizerPlugin({
-            use: 'ico',
+            use: "ico",
             test: /\.(?:ico|icon)$/,
           }),
         ],
@@ -109,5 +93,5 @@ export default defineConfig({
     // Offline the page is opened from a folder, so paths have to be relative to index.html.
     // An absolute "/static/..." would be read as the root of the disk.
     assetPrefix: OFFLINE ? "./" : BASE ? BASE + "/" : "/",
-  }
+  },
 });
