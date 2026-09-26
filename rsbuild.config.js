@@ -23,8 +23,10 @@ const OFFLINE = process.env.DOCS_TARGET === "offline";
 //
 // Empty during `yarn start`, so the dev server keeps working at the root of localhost,
 // and empty offline, where there is no prefix to speak of.
-const BASE =
-  !OFFLINE && process.env.NODE_ENV === "production" ? "/documentation" : "";
+// const BASE =
+//   !OFFLINE && process.env.NODE_ENV === "production" ? "/documentation" : "";
+
+const BASE = "";
 
 // The offline copy is written next to the online one rather than over it, so a build for
 // the archive never destroys the build that is about to be published.
