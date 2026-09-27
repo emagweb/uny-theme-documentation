@@ -94,7 +94,7 @@ const Reference = () => {
               {GPL ? (
                 <p>Nothing else in the theme or the builder contacts a third party. No analytics, no telemetry, no phoning home, and no licence check: there is no key in this edition and nothing is ever sent to us.</p>
               ) : (
-                <p>Nothing else in the theme or the builder contacts a third party. No analytics, no telemetry, no phoning home: the purchase code goes to our download server only when you press Activate on the licence screen, and only to fetch the two plugins.</p>
+                <p>Nothing else in the theme or the builder contacts a third party. No analytics, no telemetry, no phoning home: the licence code goes to our download server only when you press Activate on the licence screen, and only to fetch the two plugins.</p>
               )}
             </section>
 

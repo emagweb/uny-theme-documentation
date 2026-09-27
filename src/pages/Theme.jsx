@@ -17,10 +17,10 @@ const shot = "r-8 m-y-24 shadow-sm"
 const shotStyle = { display: 'block', width: '100%', height: 'auto' }
 
 /**
- * The edition this build describes, set in rsbuild.config.js.
+ * Which edition this build describes.
  *
  * `gpl` is the one licensed entirely under the GPL: the two bundled plugins travel in the
- * archive as zip files, there is no purchase code and no activation screen. The default
+ * archive as zip files, there is no licence code and no activation screen. The default
  * edition downloads them from our server once a code has been entered.
  *
  * Only the package contents and the plugin-installation step differ. Everything else on
@@ -110,8 +110,7 @@ const Theme = () => {
                   <p>After activation the theme prompts you to install its recommended plugins. The screen lives at <strong>Appearance, Install Plugins</strong> if you dismissed the notice.</p>
                   <img src={shotPlugins} alt="The recommended plugins screen listing all eight plugins waiting to be installed" className={shot} style={shotStyle} />
                   <p>Eight are offered, and none of them is compulsory. All eight install from this screen without touching a file: tick the ones you want, choose Install from the Bulk actions menu, then activate them the same way. <strong>Uny Builder</strong> and <strong>EWD Widgets</strong> are ours, which is why their source reads External Source; the other six come from the WordPress plugin directory - Contact Form 7, WooCommerce, Safe SVG, Nextend Social Login, WPConsent Cookie Banner and WordPress Importer.</p>
-                  <p>The two that are ours are downloaded from our own server rather than from the WordPress directory, so they ask for your purchase code once. Open <strong>Appearance, License Activation</strong>, paste the code and press Activate; installing then works exactly as it does for the other six. The code is in your Envato account under Downloads, next to this item, as <em>Licence certificate and purchase code</em>. Everything else in the theme works without it - the code only unlocks these downloads, updates and the demo import.</p>
-                  <p>If your host does not let WordPress write files on its own and asks for FTP details, the same screen offers each of our plugins as a zip. Download it there and add it through <strong>Plugins, Add New, Upload Plugin</strong>; the result is the same.</p>
+                  <p>The two that are ours are downloaded from our own server rather than from the WordPress directory, so they ask for your licence code once. Open <strong>Appearance, License Activation</strong>, paste the code and press Activate; installing then works exactly as it does for the other six. The code came with your order. Everything else in the theme works without it - the code only unlocks these downloads, updates and the demo import.</p>
                   <p>Two of them matter before you import the demo. <strong>Uny Builder</strong> has to be active, because the demo pages are made of builder sections and would otherwise arrive as empty content, and <strong>WordPress Importer</strong> is what runs the import. Add <strong>WooCommerce</strong> as well if you want the shop pages and the commerce sections to have products to show. The rest can wait until you need them.</p>
                 </>
               )}
